@@ -93,7 +93,7 @@ class SecureFolderActivity : AppCompatActivity() {
 
     private fun showUnlock() {
         val input = passwordInput()
-        val dialog = MaterialAlertDialogBuilder(this)
+        val builder = MaterialAlertDialogBuilder(this)
             .setTitle(R.string.secure_folder_unlock)
             .setMessage(R.string.secure_folder_unlock_message)
             .setView(input.container)
@@ -103,15 +103,13 @@ class SecureFolderActivity : AppCompatActivity() {
             }
             .setNegativeButton(android.R.string.cancel) { _, _ -> finish() }
             .setCancelable(false)
-            .create()
-        dialog.setOnShowListener {
-            if (canUseBiometric()) {
-                dialog.setNeutralButton(R.string.secure_folder_fingerprint) { _, _ ->
-                    authenticateBiometric()
-                }
+
+        if (canUseBiometric()) {
+            builder.setNeutralButton(R.string.secure_folder_fingerprint) { _, _ ->
+                authenticateBiometric()
             }
         }
-        dialog.show()
+        builder.show()
     }
 
     private fun unlockWithPassword(value: CharArray) {
@@ -129,11 +127,6 @@ class SecureFolderActivity : AppCompatActivity() {
             }
         }
     }
-
-    private fun canUseBiometric(): Boolean =
-        android.hardware.biometrics.BiometricManager.from(this).canAuthenticate(
-            android.hardware.biometrics.BiometricManager.Authenticators.BIOMETRIC_STRONG
-        ) == android.hardware.biometrics.BiometricManager.BIOMETRIC_SUCCESS
 
     private fun authenticateBiometric() {
         val cipher = runCatching { vault.biometricCipher() }.getOrNull()
@@ -347,9 +340,11 @@ class SecureFolderActivity : AppCompatActivity() {
 
     private fun canUseBiometric(): Boolean {
         return try {
-            BiometricManager.from(this).canAuthenticate(
-                BiometricManager.Authenticators.BIOMETRIC_STRONG
-            ) == BiometricManager.BIOMETRIC_SUCCESS
+            val manager = getSystemService(BIOMETRIC_SERVICE) as? android.hardware.biometrics.BiometricManager
+                ?: return false
+            manager.canAuthenticate(
+                android.hardware.biometrics.BiometricManager.Authenticators.BIOMETRIC_STRONG
+            ) == android.hardware.biometrics.BiometricManager.BIOMETRIC_SUCCESS
         } catch (_: Throwable) {
             false
         }

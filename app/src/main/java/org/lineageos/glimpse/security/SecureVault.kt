@@ -111,6 +111,7 @@ class SecureVault(private val context: Context) {
         return encryptRaw(vaultKey, key)
     }
 
+    fun importMedia(input: InputStream, displayName: String, mimeType: String, vaultKey: ByteArray) {
         val id = java.util.UUID.randomUUID().toString()
         val target = File(filesDir, "$id.bin")
         val payload = java.io.ByteArrayOutputStream()

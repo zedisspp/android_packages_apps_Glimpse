@@ -84,13 +84,6 @@
         <item quantity="one">%d selecionado</item>
         <item quantity="other">%d selecionados</item>
     </plurals>
-    <!-- Appearance preferences -->
-    <string name="appearance_header">Aparência</string>
-    <string name="about_header">Sobre</string>
-    <string name="theme_mode_title">Tema</string>
-    <string name="theme_mode_light">Claro</string>
-    <string name="theme_mode_dark">Escuro</string>
-    <string name="theme_mode_system">Automático (Padrão do Sistema)</string>
     <string name="pick_a_photo">Escolha uma foto</string>
     <string name="pick_a_video">Escolha um vídeo</string>
     <string name="pick_a_media">Escolha uma mídia</string>
