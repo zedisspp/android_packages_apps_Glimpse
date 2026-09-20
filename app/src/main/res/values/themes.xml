@@ -5,9 +5,10 @@
 -->
 <resources>
     <!-- Base application theme -->
-    <style name="Theme.Glimpse" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Glimpse" parent="Theme.Material3Expressive.DayNight.NoActionBar">
         <item name="android:windowLayoutInDisplayCutoutMode">always</item>
         <item name="windowActionModeOverlay">true</item>
+        <item name="bottomNavigationStyle">@style/Widget.Glimpse.NavigationBarView.Dock</item>
     </style>
 
     <!-- Top app bar option -->
@@ -22,8 +23,28 @@
         <item name="iconTint">?attr/colorOnSurface</item>
     </style>
 
+    <!-- Expressive floating dock (bottom navigation) -->
+    <style name="Widget.Glimpse.NavigationBarView.Dock" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">?attr/colorSurfaceContainerHigh</item>
+        <item name="android:minHeight">@dimen/glimpse_dock_height</item>
+        <item name="elevation">@dimen/glimpse_dock_elevation</item>
+        <item name="itemPaddingTop">14dp</item>
+        <item name="itemPaddingBottom">14dp</item>
+        <item name="itemIconGravity">start</item>
+        <item name="itemGravity">center</item>
+        <item name="labelVisibilityMode">selected</item>
+        <item name="labelFontScalingEnabled">false</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Glimpse.Dock</item>
+    </style>
+
+    <!-- Fully-rounded pill shape used by the dock -->
+    <style name="ShapeAppearance.Glimpse.Dock" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
     <!-- Media viewer -->
-    <style name="Theme.Glimpse.MediaViewer" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Theme.Glimpse.MediaViewer" parent="Theme.Material3Expressive.Dark.NoActionBar">
         <item name="android:windowLayoutInDisplayCutoutMode">always</item>
     </style>
 

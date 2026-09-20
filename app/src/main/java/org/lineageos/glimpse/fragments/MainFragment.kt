@@ -8,6 +8,10 @@ package org.lineageos.glimpse.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -40,6 +44,24 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Keep the floating dock clear of the system and gesture navigation bars
+        val dockMarginHorizontal =
+            resources.getDimensionPixelSize(R.dimen.glimpse_dock_margin_horizontal)
+        val dockMarginBottom = resources.getDimensionPixelSize(R.dimen.glimpse_dock_margin_bottom)
+        ViewCompat.setOnApplyWindowInsetsListener(navigationBarView) { dock, windowInsets ->
+            val insets = windowInsets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+
+            dock.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                leftMargin = dockMarginHorizontal + insets.left
+                rightMargin = dockMarginHorizontal + insets.right
+                bottomMargin = dockMarginBottom + insets.bottom
+            }
+
+            windowInsets
+        }
 
         // Toolbar
         toolbar.setupWithNavController(findNavController())

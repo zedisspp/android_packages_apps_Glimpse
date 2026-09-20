@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Expressive floating dock (bottom navigation) -->
+    <dimen name="glimpse_dock_height">64dp</dimen>
+    <dimen name="glimpse_dock_elevation">3dp</dimen>
+    <dimen name="glimpse_dock_margin_horizontal">24dp</dimen>
+    <dimen name="glimpse_dock_margin_bottom">16dp</dimen>
+</resources>
