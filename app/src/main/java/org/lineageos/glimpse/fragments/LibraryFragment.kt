@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -43,6 +44,15 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
                 leftMargin = insets.left
                 rightMargin = insets.right
             }
+            // The list runs edge-to-edge behind the translucent floating
+            // dock, so reserve space for it and let content draw into the
+            // padding area instead of clipping it away.
+            libraryNestedScrollView.clipToPadding = false
+            libraryNestedScrollView.updatePadding(
+                bottom = insets.bottom + resources.getDimensionPixelSize(
+                    R.dimen.glimpse_dock_content_reserved_space
+                )
+            )
 
             windowInsets
         }

@@ -285,7 +285,19 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
                 leftMargin = insets.left
                 rightMargin = insets.right
             }
-            recyclerView.updatePadding(bottom = insets.bottom)
+            // When embedded as the Reels tab, the grid runs edge-to-edge behind
+            // the translucent floating dock, so reserve space for it and let
+            // content draw into the padding area instead of clipping it away.
+            recyclerView.clipToPadding = !hideToolbar
+            recyclerView.updatePadding(
+                bottom = insets.bottom + when (hideToolbar) {
+                    true -> resources.getDimensionPixelSize(
+                        R.dimen.glimpse_dock_content_reserved_space
+                    )
+
+                    false -> 0
+                }
+            )
 
             windowInsets
         }

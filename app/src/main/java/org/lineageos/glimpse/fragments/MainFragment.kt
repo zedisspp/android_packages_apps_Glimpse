@@ -6,9 +6,11 @@
 package org.lineageos.glimpse.fragments
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
@@ -19,7 +21,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.navigation.NavigationBarView
+import com.google.android.material.shape.MaterialShapeDrawable
 import org.lineageos.glimpse.R
 import org.lineageos.glimpse.SettingsActivity
 import org.lineageos.glimpse.ext.getViewProperty
@@ -61,6 +65,18 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
 
             windowInsets
+        }
+
+        // Let the dock's pill be translucent so content scrolling underneath
+        // (now edge-to-edge) shows through it, instead of a solid block
+        (navigationBarView.background as? MaterialShapeDrawable)?.let { dockBackground ->
+            val surfaceColor = MaterialColors.getColor(
+                navigationBarView,
+                com.google.android.material.R.attr.colorSurfaceContainerHigh,
+            )
+            dockBackground.fillColor = ColorStateList.valueOf(
+                ColorUtils.setAlphaComponent(surfaceColor, DOCK_BACKGROUND_ALPHA)
+            )
         }
 
         // Toolbar
@@ -111,6 +127,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     companion object {
+        // ~80% opacity, translucent enough to reveal content scrolling
+        // underneath the dock without hurting icon/label legibility
+        private const val DOCK_BACKGROUND_ALPHA = 204 // 255 * 0.8
+
         // Keep in sync with the NavigationBarView menu
         private val fragments = arrayOf(
             {
@@ -121,7 +141,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                     )
                 }
             },
-            { AlbumsFragment() },
+            {
+                AlbumsFragment().apply {
+                    arguments = AlbumsFragment.createBundle(reserveDockSpace = true)
+                }
+            },
             { LibraryFragment() },
         )
     }

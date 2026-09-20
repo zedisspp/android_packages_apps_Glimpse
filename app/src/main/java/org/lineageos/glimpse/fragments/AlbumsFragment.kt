@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
@@ -54,6 +55,10 @@ class AlbumsFragment : Fragment(R.layout.fragment_albums) {
     // Views
     private val noMediaLinearLayout by getViewProperty<LinearLayout>(R.id.noMediaLinearLayout)
     private val recyclerView by getViewProperty<RecyclerView>(R.id.recyclerView)
+
+    // Arguments
+    private val reserveDockSpace: Boolean
+        get() = arguments?.getBoolean(ARG_RESERVE_DOCK_SPACE, false) ?: false
 
     // RecyclerView
     private val adapter by lazy {
@@ -128,6 +133,23 @@ class AlbumsFragment : Fragment(R.layout.fragment_albums) {
                 insets,
                 start = true,
                 end = true,
+            )
+            // When embedded as the Albums tab, the grid runs edge-to-edge
+            // behind the translucent floating dock, so reserve space for it
+            // and let content draw into the padding area instead of clipping
+            // it away.
+            recyclerView.clipToPadding = !reserveDockSpace
+            recyclerView.setPadding(
+                recyclerView.paddingLeft,
+                recyclerView.paddingTop,
+                recyclerView.paddingRight,
+                insets.bottom + when (reserveDockSpace) {
+                    true -> resources.getDimensionPixelSize(
+                        R.dimen.glimpse_dock_content_reserved_space
+                    )
+
+                    false -> 0
+                }
             )
 
             windowInsets
@@ -210,5 +232,21 @@ class AlbumsFragment : Fragment(R.layout.fragment_albums) {
 
     companion object {
         private val LOG_TAG = AlbumsFragment::class.simpleName!!
+
+        private const val ARG_RESERVE_DOCK_SPACE = "reserve_dock_space"
+
+        /**
+         * Create a [Bundle] to use as this fragment's arguments.
+         *
+         * @param reserveDockSpace Whether this instance is embedded above the
+         *   floating dock (the Albums tab in [MainFragment]) and should
+         *   reserve bottom padding for it. Leave false for standalone usages
+         *   (e.g. the picker flow), where there's no dock.
+         */
+        fun createBundle(
+            reserveDockSpace: Boolean = false,
+        ) = bundleOf(
+            ARG_RESERVE_DOCK_SPACE to reserveDockSpace,
+        )
     }
 }

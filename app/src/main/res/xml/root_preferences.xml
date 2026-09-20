@@ -58,4 +58,22 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/about_header">
+
+        <Preference
+            app:icon="@drawable/ic_info"
+            app:key="credits_github"
+            app:summary="@string/credits_github_summary"
+            app:title="@string/credits_github_title">
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/zedisspp" />
+
+        </Preference>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
