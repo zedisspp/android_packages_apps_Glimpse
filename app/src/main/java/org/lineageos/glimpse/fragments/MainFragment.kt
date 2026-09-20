@@ -31,7 +31,6 @@ import org.lineageos.glimpse.models.AlbumType
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     // Views
-    private val dockContainer by getViewProperty<View>(R.id.dockContainer)
     private val navigationBarView by getViewProperty<NavigationBarView>(R.id.navigationBarView)
     private val settingsMaterialButton by getViewProperty<MaterialButton>(R.id.settingsMaterialButton)
     private val toolbar by getViewProperty<MaterialToolbar>(R.id.toolbar)
@@ -54,13 +53,24 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         val dockMarginHorizontal =
             resources.getDimensionPixelSize(R.dimen.glimpse_dock_margin_horizontal)
         val dockMarginBottom = resources.getDimensionPixelSize(R.dimen.glimpse_dock_margin_bottom)
-        ViewCompat.setOnApplyWindowInsetsListener(dockContainer) { dock, windowInsets ->
+        ViewCompat.setOnApplyWindowInsetsListener(navigationBarView) { dock, windowInsets ->
             val insets = windowInsets.getInsets(
                 WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
             )
 
             dock.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 leftMargin = dockMarginHorizontal + insets.left
+                bottomMargin = dockMarginBottom + insets.bottom
+            }
+
+            windowInsets
+        }
+        ViewCompat.setOnApplyWindowInsetsListener(settingsMaterialButton) { button, windowInsets ->
+            val insets = windowInsets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+
+            button.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 rightMargin = dockMarginHorizontal + insets.right
                 bottomMargin = dockMarginBottom + insets.bottom
             }

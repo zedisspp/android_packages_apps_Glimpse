@@ -36,36 +36,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-    <!-- Floating dock + settings button, docked side by side and hugging
-         the start of the screen instead of stretching edge to edge -->
-    <LinearLayout
-        android:id="@+id/dockContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+    <!-- Floating dock, shrunk to leave room for the settings button
+         beside it instead of stretching edge to edge. BottomNavigationView
+         only supports match_parent/0dp width, so it stays constrained
+         width rather than wrap_content (which silently drops unselected
+         item icons) -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationBarView"
+        style="@style/Widget.Glimpse.NavigationBarView.Dock"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/glimpse_dock_height"
+        android:layout_marginStart="@dimen/glimpse_dock_margin_horizontal"
+        android:layout_marginBottom="@dimen/glimpse_dock_margin_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintEnd_toStartOf="@+id/settingsMaterialButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/fragment_main_bottom_app_bar" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navigationBarView"
-            style="@style/Widget.Glimpse.NavigationBarView.Dock"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/glimpse_dock_height"
-            app:menu="@menu/fragment_main_bottom_app_bar" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/settingsMaterialButton"
-            style="@style/Widget.Glimpse.Button.Dock.Settings"
-            android:layout_width="@dimen/glimpse_dock_settings_size"
-            android:layout_height="@dimen/glimpse_dock_settings_size"
-            android:layout_marginStart="@dimen/glimpse_dock_settings_gap"
-            android:contentDescription="@string/title_activity_settings"
-            android:tooltipText="@string/title_activity_settings"
-            app:icon="@drawable/ic_settings" />
-
-    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/settingsMaterialButton"
+        style="@style/Widget.Glimpse.Button.Dock.Settings"
+        android:layout_width="@dimen/glimpse_dock_settings_size"
+        android:layout_height="@dimen/glimpse_dock_settings_size"
+        android:layout_marginStart="@dimen/glimpse_dock_settings_gap"
+        android:layout_marginEnd="@dimen/glimpse_dock_margin_horizontal"
+        android:layout_marginBottom="@dimen/glimpse_dock_margin_bottom"
+        android:contentDescription="@string/title_activity_settings"
+        android:tooltipText="@string/title_activity_settings"
+        app:icon="@drawable/ic_settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
