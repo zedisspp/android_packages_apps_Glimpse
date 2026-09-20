@@ -193,5 +193,13 @@
     <string name="secure_folder_open_error">Could not open this protected media.</string>
     <string name="secure_folder_library_card">Secure Folder</string>
     <string name="secure_folder_library_summary">Encrypted photos and videos</string>
+    <string name="secure_folder_private_hint">Private, encrypted and hidden from media indexing</string>
+    <string name="secure_folder_empty_hint">Add photos or videos to keep them inside this protected space.</string>
+    <string name="secure_folder_photo">Photo</string>
+    <string name="secure_folder_video">Video</string>
+    <plurals name="secure_folder_item_count">
+        <item quantity="one">1 protected item</item>
+        <item quantity="other">%d protected items</item>
+    </plurals>
 
 </resources>
