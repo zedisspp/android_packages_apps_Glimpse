@@ -63,7 +63,7 @@
         app:title="@string/about_header">
 
         <Preference
-            app:icon="@drawable/ic_info"
+            app:icon="@drawable/ic_github"
             app:key="credits_github"
             app:summary="@string/credits_github_summary"
             app:title="@string/credits_github_title">

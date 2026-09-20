@@ -13,6 +13,7 @@ import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import androidx.preference.PreferenceManager
@@ -56,8 +57,16 @@ class LocalPlayerViewModel(
         applicationContext
     )
 
+    // Renderers factory: prefer (software) extension decoders when the platform's
+    // hardware decoder can't handle a given format/codec/profile, and fall back to
+    // another available decoder instead of failing with an error or a black screen
+    // when decoding a higher resolution or less common codec.
+    private val renderersFactory = DefaultRenderersFactory(applicationContext)
+        .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER)
+        .setEnableDecoderFallback(true)
+
     // ExoPlayer
-    val exoPlayer = ExoPlayer.Builder(applicationContext)
+    val exoPlayer = ExoPlayer.Builder(applicationContext, renderersFactory)
         .setAudioAttributes(
             AudioAttributes.Builder()
                 .setContentType(C.AUDIO_CONTENT_TYPE_MOVIE)
