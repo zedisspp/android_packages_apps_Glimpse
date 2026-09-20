@@ -16,4 +16,5 @@
     <dimen name="glimpse_dock_settings_size">72dp</dimen>
     <dimen name="glimpse_dock_settings_gap">8dp</dimen>
     <dimen name="glimpse_dock_settings_corner_radius">22dp</dimen>
+    <dimen name="glimpse_dock_corner_radius">50dp</dimen>
 </resources>

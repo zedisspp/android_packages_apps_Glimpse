@@ -25,7 +25,7 @@
 
     <!-- Expressive floating dock (bottom navigation) -->
     <style name="Widget.Glimpse.NavigationBarView.Dock" parent="Widget.Material3.BottomNavigationView">
-        <item name="android:background">?attr/colorSurfaceContainerHigh</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:minHeight">@dimen/glimpse_dock_height</item>
         <item name="elevation">@dimen/glimpse_dock_elevation</item>
         <item name="itemIconSize">24dp</item>

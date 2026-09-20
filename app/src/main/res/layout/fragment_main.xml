@@ -41,7 +41,7 @@
          only supports match_parent/0dp width, so it stays constrained
          width rather than wrap_content (which silently drops unselected
          item icons) -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <org.lineageos.glimpse.ui.BackdropBlurBottomNavigationView
         android:id="@+id/navigationBarView"
         style="@style/Widget.Glimpse.NavigationBarView.Dock"
         android:layout_width="0dp"

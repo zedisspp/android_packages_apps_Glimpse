@@ -6,7 +6,6 @@
 package org.lineageos.glimpse.fragments
 
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -20,9 +19,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.color.MaterialColors
 import com.google.android.material.navigation.NavigationBarView
-import com.google.android.material.shape.MaterialShapeDrawable
 import org.lineageos.glimpse.R
 import org.lineageos.glimpse.SettingsActivity
 import org.lineageos.glimpse.ext.getViewProperty
@@ -41,6 +38,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 super.onPageSelected(position)
 
                 navigationBarView.menu.getItem(position).isChecked = true
+                navigationBarView.refreshBackdrop()
             }
         }
     }
@@ -77,14 +75,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             windowInsets
         }
 
-        // Keep the dock fully opaque so scrolling content never shows through it.
-        (navigationBarView.background as? MaterialShapeDrawable)?.let { dockBackground ->
-            val surfaceColor = MaterialColors.getColor(
-                navigationBarView,
-                com.google.android.material.R.attr.colorSurfaceContainerHigh,
-            )
-            dockBackground.fillColor = ColorStateList.valueOf(surfaceColor)
-        }
+        // Render a small, downsampled backdrop behind the dock. The snapshot
+        // is refreshed after page changes and when scrolling settles, rather
+        // than every frame, to keep the blur inexpensive.
+        navigationBarView.setBackdropSource(viewPager2)
 
         // Toolbar
         toolbar.setupWithNavController(findNavController())
@@ -103,15 +97,27 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             override fun createFragment(position: Int) = fragments[position]()
         }
         viewPager2.offscreenPageLimit = fragments.size
-        viewPager2.setPageTransformer { page, position ->
-            val absPosition = kotlin.math.abs(position)
-            page.alpha = 0.72f + (1f - absPosition.coerceAtMost(1f)) * 0.28f
-            page.translationX = -position * page.width * 0.08f
-            val scale = 0.985f + (1f - absPosition.coerceAtMost(1f)) * 0.015f
-            page.scaleX = scale
-            page.scaleY = scale
-        }
+        // Do not apply a page transformer here. Translating/scaling pages in
+        // ViewPager2 can expose the neighboring fragment at the screen edge.
+        // Navigation remains instantaneous and the destination transitions are
+        // handled by Navigation Component where appropriate.
+        viewPager2.setPageTransformer(null)
         viewPager2.registerOnPageChangeCallback(onPageChangeCallback)
+
+        val scrollRefresh = object : android.view.ViewTreeObserver.OnScrollChangedListener {
+            private var refreshPending = false
+
+            override fun onScrollChanged() {
+                if (refreshPending) return
+                refreshPending = true
+                navigationBarView.postDelayed({
+                    refreshPending = false
+                    navigationBarView.refreshBackdrop()
+                }, 140L)
+            }
+        }
+        view.viewTreeObserver.addOnScrollChangedListener(scrollRefresh)
+        view.setTag(R.id.glimpse_scroll_refresh_listener, scrollRefresh)
 
         navigationBarView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -136,6 +142,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     override fun onDestroyView() {
+        view?.let { root ->
+            (root.getTag(R.id.glimpse_scroll_refresh_listener) as? android.view.ViewTreeObserver.OnScrollChangedListener)?.let { listener ->
+                root.viewTreeObserver.removeOnScrollChangedListener(listener)
+            }
+        }
+
         // ViewPager2
         viewPager2.unregisterOnPageChangeCallback(onPageChangeCallback)
         viewPager2.adapter = null
