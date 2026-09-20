@@ -10,7 +10,6 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.ColorUtils
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
@@ -78,16 +77,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             windowInsets
         }
 
-        // Let the dock's pill be translucent so content scrolling underneath
-        // (now edge-to-edge) shows through it, instead of a solid block
+        // Keep the dock fully opaque so scrolling content never shows through it.
         (navigationBarView.background as? MaterialShapeDrawable)?.let { dockBackground ->
             val surfaceColor = MaterialColors.getColor(
                 navigationBarView,
                 com.google.android.material.R.attr.colorSurfaceContainerHigh,
             )
-            dockBackground.fillColor = ColorStateList.valueOf(
-                ColorUtils.setAlphaComponent(surfaceColor, DOCK_BACKGROUND_ALPHA)
-            )
+            dockBackground.fillColor = ColorStateList.valueOf(surfaceColor)
         }
 
         // Toolbar
@@ -138,10 +134,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     companion object {
-        // ~80% opacity, translucent enough to reveal content scrolling
-        // underneath the dock without hurting icon/label legibility
-        private const val DOCK_BACKGROUND_ALPHA = 204 // 255 * 0.8
-
         // Keep in sync with the NavigationBarView menu
         private val fragments = arrayOf(
             {
