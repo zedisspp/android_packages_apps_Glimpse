@@ -32,35 +32,178 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="9dp"
                 android:orientation="vertical">
 
-                <org.lineageos.glimpse.ui.views.ListItem
-                    android:id="@+id/photosAlbumListItem"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:headlineText="@string/album_photos"
-                    app:leadingIconImage="@drawable/ic_photo_size_select_actual" />
+                    android:orientation="horizontal">
 
-                <org.lineageos.glimpse.ui.views.ListItem
-                    android:id="@+id/videosAlbumListItem"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:headlineText="@string/album_videos"
-                    app:leadingIconImage="@drawable/ic_play_circle_outline" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/photosAlbumListItem"
+                        android:layout_width="0dp"
+                        android:layout_height="132dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="?attr/colorPrimaryContainer"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        app:rippleColor="?attr/colorOnPrimaryContainer">
 
-                <org.lineageos.glimpse.ui.views.ListItem
-                    android:id="@+id/favoritesAlbumListItem"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:headlineText="@string/album_favorites"
-                    app:leadingIconImage="@drawable/ic_star_border" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                <org.lineageos.glimpse.ui.views.ListItem
-                    android:id="@+id/trashAlbumListItem"
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_photo_size_select_actual"
+                                app:tint="?attr/colorOnPrimaryContainer" />
+
+                            <TextView
+                                style="@style/TextAppearance.Material3.TitleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/album_photos"
+                                android:textColor="?attr/colorOnPrimaryContainer" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/videosAlbumListItem"
+                        android:layout_width="0dp"
+                        android:layout_height="132dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="?attr/colorSecondaryContainer"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        app:rippleColor="?attr/colorOnSecondaryContainer">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_play_circle_outline"
+                                app:tint="?attr/colorOnSecondaryContainer" />
+
+                            <TextView
+                                style="@style/TextAppearance.Material3.TitleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/album_videos"
+                                android:textColor="?attr/colorOnSecondaryContainer" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:headlineText="@string/album_trash"
-                    app:leadingIconImage="@drawable/ic_delete" />
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/favoritesAlbumListItem"
+                        android:layout_width="0dp"
+                        android:layout_height="132dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="?attr/colorTertiaryContainer"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        app:rippleColor="?attr/colorOnTertiaryContainer">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_star_border"
+                                app:tint="?attr/colorOnTertiaryContainer" />
+
+                            <TextView
+                                style="@style/TextAppearance.Material3.TitleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/album_favorites"
+                                android:textColor="?attr/colorOnTertiaryContainer" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/trashAlbumListItem"
+                        android:layout_width="0dp"
+                        android:layout_height="132dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="?attr/colorErrorContainer"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        app:rippleColor="?attr/colorOnErrorContainer">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_delete"
+                                app:tint="?attr/colorOnErrorContainer" />
+
+                            <TextView
+                                style="@style/TextAppearance.Material3.TitleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/album_trash"
+                                android:textColor="?attr/colorOnErrorContainer" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
 
             </LinearLayout>
 

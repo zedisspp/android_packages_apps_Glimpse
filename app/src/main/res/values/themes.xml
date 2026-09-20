@@ -29,9 +29,9 @@
         <item name="android:minHeight">@dimen/glimpse_dock_height</item>
         <item name="elevation">@dimen/glimpse_dock_elevation</item>
         <item name="itemIconSize">24dp</item>
-        <item name="itemPaddingTop">20dp</item>
-        <item name="itemPaddingBottom">20dp</item>
-        <item name="itemIconGravity">start</item>
+        <item name="itemPaddingTop">10dp</item>
+        <item name="itemPaddingBottom">10dp</item>
+        <item name="itemIconGravity">top</item>
         <item name="itemGravity">center</item>
         <item name="labelVisibilityMode">selected</item>
         <item name="labelFontScalingEnabled">false</item>
