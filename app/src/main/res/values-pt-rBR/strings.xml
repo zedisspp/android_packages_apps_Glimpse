@@ -84,7 +84,9 @@
         <item quantity="one">%d selecionado</item>
         <item quantity="other">%d selecionados</item>
     </plurals>
-         <!-- Appearance preferences -->
+    <!-- Appearance preferences -->
+    <string name="appearance_header">Aparência</string>
+    <string name="about_header">Sobre</string>
     <string name="theme_mode_title">Tema</string>
     <string name="theme_mode_light">Claro</string>
     <string name="theme_mode_dark">Escuro</string>
