@@ -157,6 +157,6 @@
     <string name="remember_video_playback_position_enabled_description">Resume videos from the last stopped position</string>
 
     <!-- About preferences -->
-    <string name="credits_github_title">Credits</string>
-    <string name="credits_github_summary">github.com/zedisspp</string>
+    <string name="credits_github_title">Redesign MD3 Expressive</string>
+    <string name="credits_github_summary">zedisspp</string>
 </resources>
