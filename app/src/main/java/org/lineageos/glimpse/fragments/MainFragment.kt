@@ -20,7 +20,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
-import org.lineageos.glimpse.ui.BackdropBlurBottomNavigationView
+import com.google.android.material.color.MaterialColors
+import com.google.android.material.navigation.NavigationBarView
+import com.google.android.material.shape.MaterialShapeDrawable
 import org.lineageos.glimpse.R
 import org.lineageos.glimpse.SettingsActivity
 import org.lineageos.glimpse.ext.getViewProperty
@@ -28,7 +30,7 @@ import org.lineageos.glimpse.models.AlbumType
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     // Views
-    private val navigationBarView by getViewProperty<BackdropBlurBottomNavigationView>(R.id.navigationBarView)
+    private val navigationBarView by getViewProperty<NavigationBarView>(R.id.navigationBarView)
     private val settingsMaterialButton by getViewProperty<MaterialButton>(R.id.settingsMaterialButton)
     private val toolbar by getViewProperty<MaterialToolbar>(R.id.toolbar)
     private val viewPager2 by getViewProperty<ViewPager2>(R.id.viewPager2)
@@ -101,32 +103,15 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             override fun createFragment(position: Int) = fragments[position]()
         }
         viewPager2.offscreenPageLimit = fragments.size
-        // Do not apply a page transformer here. Translating/scaling pages in
-        // ViewPager2 can expose the neighboring fragment at the screen edge.
-        // Navigation remains instantaneous and the destination transitions are
-        // handled by Navigation Component where appropriate.
-        viewPager2.setPageTransformer(null)
-        viewPager2.registerOnPageChangeCallback(onPageChangeCallback)
-
-        // Keep the backdrop live while the gallery moves. A scroll-listener with
-        // a long delayed refresh makes the blur look like a slideshow. Instead,
-        // sample at most once every ~33 ms (about 30 fps), only while the root is
-        // actually drawing. This keeps the backdrop visually fluid without
-        // forcing a full-resolution screenshot every frame.
-        val frameRefresh = object : android.view.ViewTreeObserver.OnPreDrawListener {
-            private var lastRefreshNanos = 0L
-
-            override fun onPreDraw(): Boolean {
-                val now = System.nanoTime()
-                if (now - lastRefreshNanos >= 33_000_000L) {
-                    lastRefreshNanos = now
-                    navigationBarView.refreshBackdrop()
-                }
-                return true
-            }
+        viewPager2.setPageTransformer { page, position ->
+            val absPosition = kotlin.math.abs(position)
+            page.alpha = 0.72f + (1f - absPosition.coerceAtMost(1f)) * 0.28f
+            page.translationX = -position * page.width * 0.08f
+            val scale = 0.985f + (1f - absPosition.coerceAtMost(1f)) * 0.015f
+            page.scaleX = scale
+            page.scaleY = scale
         }
-        view.viewTreeObserver.addOnPreDrawListener(frameRefresh)
-        view.setTag(R.id.glimpse_scroll_refresh_listener, frameRefresh)
+        viewPager2.registerOnPageChangeCallback(onPageChangeCallback)
 
         navigationBarView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -151,12 +136,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     override fun onDestroyView() {
-        view?.let { root ->
-            (root.getTag(R.id.glimpse_scroll_refresh_listener) as? android.view.ViewTreeObserver.OnPreDrawListener)?.let { listener ->
-                root.viewTreeObserver.removeOnPreDrawListener(listener)
-            }
-        }
-
         // ViewPager2
         viewPager2.unregisterOnPageChangeCallback(onPageChangeCallback)
         viewPager2.adapter = null
