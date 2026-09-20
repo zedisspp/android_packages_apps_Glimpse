@@ -166,4 +166,32 @@
     <!-- About preferences -->
     <string name="credits_github_title">Redesign MD3 Expressive</string>
     <string name="credits_github_summary">zedisspp</string>
+
+
+    <!-- Secure folder -->
+    <string name="secure_folder_title">Secure Folder</string>
+    <string name="secure_folder_description">Encrypted photos and videos. Protected media stays in private app storage and is not indexed by other apps.</string>
+    <string name="secure_folder_add">Add photos and videos</string>
+    <string name="secure_folder_create_title">Create Secure Folder</string>
+    <string name="secure_folder_create_message">Choose a PIN or password with at least 4 characters. You can also use your fingerprint after setup.</string>
+    <string name="secure_folder_create">Create</string>
+    <string name="secure_folder_unlock">Unlock Secure Folder</string>
+    <string name="secure_folder_unlock_message">Use your fingerprint or the Secure Folder PIN/password.</string>
+    <string name="secure_folder_unlock_pin">PIN / password</string>
+    <string name="secure_folder_fingerprint">Fingerprint</string>
+    <string name="secure_folder_fingerprint_subtitle">Authenticate to open your encrypted media</string>
+    <string name="secure_folder_use_password">Use PIN / password</string>
+    <string name="secure_folder_fingerprint_unavailable">Fingerprint is not available. Use your PIN/password.</string>
+    <string name="secure_folder_password_hint">PIN or password</string>
+    <string name="secure_folder_password_short">Use at least 4 characters.</string>
+    <string name="secure_folder_wrong_password">Incorrect PIN/password.</string>
+    <string name="secure_folder_no_lock">Set a secure screen lock on the device first.</string>
+    <string name="secure_folder_device_unlock">Authenticate to continue</string>
+    <string name="secure_folder_empty">Your Secure Folder is empty.</string>
+    <string name="secure_folder_open">Open</string>
+    <string name="secure_folder_delete">Delete</string>
+    <string name="secure_folder_open_error">Could not open this protected media.</string>
+    <string name="secure_folder_library_card">Secure Folder</string>
+    <string name="secure_folder_library_summary">Encrypted photos and videos</string>
+
 </resources>

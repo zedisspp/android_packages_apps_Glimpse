@@ -207,6 +207,60 @@
 
             </LinearLayout>
 
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/secureFolderListItem"
+                android:layout_width="match_parent"
+                android:layout_height="104dp"
+                android:layout_marginHorizontal="17dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="?attr/colorPrimaryContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:rippleColor="?attr/colorOnPrimaryContainer">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="22dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_lock_vault"
+                        app:tint="?attr/colorOnPrimaryContainer" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextAppearance.Material3.TitleMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/secure_folder_library_card"
+                            android:textColor="?attr/colorOnPrimaryContainer" />
+
+                        <TextView
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/secure_folder_library_summary"
+                            android:textColor="?attr/colorOnPrimaryContainer" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -31,6 +31,7 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
     private val libraryNestedScrollView by getViewProperty<NestedScrollView>(R.id.libraryNestedScrollView)
     private val trashAlbumListItem by getViewProperty<MaterialCardView>(R.id.trashAlbumListItem)
     private val videosAlbumListItem by getViewProperty<MaterialCardView>(R.id.videosAlbumListItem)
+    private val secureFolderListItem by getViewProperty<MaterialCardView>(R.id.secureFolderListItem)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,6 +72,10 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
 
         trashAlbumListItem.setOnClickListener {
             openAlbum(AlbumType.TRASH)
+        }
+
+        secureFolderListItem.setOnClickListener {
+            startActivity(android.content.Intent(requireContext(), org.lineageos.glimpse.SecureFolderActivity::class.java))
         }
     }
 
