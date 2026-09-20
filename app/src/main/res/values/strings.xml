@@ -209,4 +209,5 @@
         <item quantity="other">%d protected items</item>
     </plurals>
 
+    <string name="double_tap_to_seek_seconds_value">%1$d s</string>
 </resources>

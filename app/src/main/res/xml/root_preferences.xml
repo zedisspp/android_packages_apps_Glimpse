@@ -54,15 +54,10 @@
             app:summary="@string/double_tap_to_seek_enabled_description"
             app:title="@string/double_tap_to_seek_enabled_title" />
 
-        <SeekBarPreference
-            android:max="30"
+        <org.lineageos.glimpse.ui.ExpressiveSliderPreference
             app:defaultValue="10"
             app:dependency="double_tap_to_seek_enabled"
-            app:iconSpaceReserved="false"
             app:key="double_tap_to_seek_seconds"
-            app:min="5"
-            app:seekBarIncrement="5"
-            app:showSeekBarValue="true"
             app:summary="@string/double_tap_to_seek_seconds_description"
             app:title="@string/double_tap_to_seek_seconds_title" />
 

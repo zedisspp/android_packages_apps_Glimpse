@@ -131,4 +131,5 @@
     <string name="secure_folder_photo">Foto</string>
     <string name="secure_folder_video">Vídeo</string>
     <plurals name="secure_folder_item_count"><item quantity="one">1 item protegido</item><item quantity="other">%d itens protegidos</item></plurals>
+    <string name="double_tap_to_seek_seconds_value">%1$d s</string>
 </resources>
