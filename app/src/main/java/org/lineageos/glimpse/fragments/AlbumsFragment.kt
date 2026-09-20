@@ -107,6 +107,7 @@ class AlbumsFragment : Fragment(R.layout.fragment_albums) {
                 thumbnailImageView.loadThumbnail(
                     item.thumbnail,
                     options = RequestOptions()
+                        .disallowHardwareConfig()
                         .override(
                             Thumbnail.MAX_THUMBNAIL_SIZE,
                             Thumbnail.MAX_THUMBNAIL_SIZE

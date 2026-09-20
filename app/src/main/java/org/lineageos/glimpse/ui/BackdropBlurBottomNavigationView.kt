@@ -15,6 +15,7 @@ import android.graphics.RenderEffect
 import android.graphics.RenderNode
 import android.os.Build
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -97,7 +98,16 @@ class BackdropBlurBottomNavigationView @JvmOverloads constructor(
             -(dockLocation[0] - sourceLocation[0]).toFloat(),
             -(dockLocation[1] - sourceLocation[1]).toFloat(),
         )
-        source.draw(canvas)
+        try {
+            // Thumbnail views can contain hardware-backed Glide bitmaps. Drawing
+            // those into this software bitmap may throw at runtime on Android 12+.
+            source.draw(canvas)
+        } catch (e: RuntimeException) {
+            Log.w(LOG_TAG, "Unable to capture backdrop; skipping blur frame", e)
+            canvas.restore()
+            invalidate()
+            return
+        }
         canvas.restore()
 
         blurNode?.let { node ->
@@ -147,5 +157,9 @@ class BackdropBlurBottomNavigationView @JvmOverloads constructor(
             com.google.android.material.R.attr.colorSurfaceContainerHigh,
         )
         return (surface and 0x00ffffff) or (0x58 shl 24)
+    }
+
+    companion object {
+        private const val LOG_TAG = "GlimpseBackdrop"
     }
 }

@@ -162,6 +162,7 @@ class ThumbnailAdapter : ListAdapter<AlbumViewModel.AlbumContent, RecyclerView.V
             thumbnailImageView.load(
                 media.uri,
                 options = RequestOptions()
+                    .disallowHardwareConfig()
                     .override(
                         Thumbnail.MAX_THUMBNAIL_SIZE,
                         Thumbnail.MAX_THUMBNAIL_SIZE
