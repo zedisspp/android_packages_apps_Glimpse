@@ -138,9 +138,16 @@
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preference titles -->
+    <string name="appearance_header">Appearance</string>
     <string name="general_header">General</string>
     <string name="video_header">Video</string>
     <string name="about_header">About</string>
+
+    <!-- Appearance preferences -->
+    <string name="theme_mode_title">Theme</string>
+    <string name="theme_mode_light">Light</string>
+    <string name="theme_mode_dark">Dark</string>
+    <string name="theme_mode_system">Automatic (system default)</string>
 
     <!-- General preferences -->
     <string name="edge_tap_navigation_enable_title">Edge tap navigation</string>

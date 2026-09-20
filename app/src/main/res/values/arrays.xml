@@ -9,4 +9,17 @@
         <item>@string/set_wallpaper_lock_screen</item>
         <item>@string/set_wallpaper_both</item>
     </string-array>
+
+    <!-- Theme mode -->
+    <string-array name="theme_mode_entries">
+        <item>@string/theme_mode_light</item>
+        <item>@string/theme_mode_dark</item>
+        <item>@string/theme_mode_system</item>
+    </string-array>
+
+    <string-array name="theme_mode_values" translatable="false">
+        <item>light</item>
+        <item>dark</item>
+        <item>system</item>
+    </string-array>
 </resources>

@@ -7,8 +7,39 @@ package org.lineageos.glimpse.ext
 
 import android.content.SharedPreferences
 import android.net.Uri
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import java.security.MessageDigest
+
+// App theme (light, dark or follow the system's setting)
+private const val THEME_MODE_KEY = "theme_mode"
+private const val THEME_MODE_LIGHT = "light"
+private const val THEME_MODE_DARK = "dark"
+private const val THEME_MODE_SYSTEM = "system"
+
+// System is the default: a fresh install behaves exactly like the platform theme
+private const val THEME_MODE_DEFAULT = THEME_MODE_SYSTEM
+
+var SharedPreferences.themeMode: String
+    get() = getString(THEME_MODE_KEY, THEME_MODE_DEFAULT) ?: THEME_MODE_DEFAULT
+    set(value) = edit {
+        putString(THEME_MODE_KEY, value)
+    }
+
+/**
+ * Maps the stored [themeMode] value to the corresponding [AppCompatDelegate] night mode
+ * constant and applies it. Safe to call before any [android.app.Activity] is created, e.g.
+ * from [android.app.Application.onCreate].
+ */
+fun SharedPreferences.applyThemeMode() {
+    AppCompatDelegate.setDefaultNightMode(
+        when (themeMode) {
+            THEME_MODE_LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
+            THEME_MODE_DARK -> AppCompatDelegate.MODE_NIGHT_YES
+            else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+        }
+    )
+}
 
 // All files access dialog dismissed
 private const val MANAGE_MEDIA_PERMISSION_DIALOG_DISMISSED_KEY =

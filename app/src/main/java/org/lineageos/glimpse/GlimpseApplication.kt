@@ -6,7 +6,9 @@
 package org.lineageos.glimpse
 
 import android.app.Application
+import androidx.preference.PreferenceManager
 import com.google.android.material.color.DynamicColors
+import org.lineageos.glimpse.ext.applyThemeMode
 import org.lineageos.glimpse.repository.MediaRepository
 
 class GlimpseApplication : Application() {
@@ -14,6 +16,9 @@ class GlimpseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        // Apply the user's chosen theme (defaults to following the system)
+        PreferenceManager.getDefaultSharedPreferences(this).applyThemeMode()
 
         // Observe dynamic colors changes
         DynamicColors.applyToActivitiesIfAvailable(this)

@@ -19,10 +19,13 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.MaterialToolbar
+import org.lineageos.glimpse.ext.applyThemeMode
 import org.lineageos.glimpse.ext.setOffset
+import org.lineageos.glimpse.ext.themeMode
 import kotlin.reflect.safeCast
 
 class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
@@ -130,5 +133,22 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
         }
     }
 
-    class RootSettingsFragment : SettingsFragment(R.xml.root_preferences)
+    class RootSettingsFragment : SettingsFragment(R.xml.root_preferences) {
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+            super.onCreatePreferences(savedInstanceState, rootKey)
+
+            findPreference<ListPreference>(THEME_MODE_PREFERENCE_KEY)?.setOnPreferenceChangeListener { _, newValue ->
+                preferenceManager.sharedPreferences?.apply {
+                    themeMode = newValue as String
+                    applyThemeMode()
+                }
+
+                true
+            }
+        }
+
+        companion object {
+            private const val THEME_MODE_PREFERENCE_KEY = "theme_mode"
+        }
+    }
 }
