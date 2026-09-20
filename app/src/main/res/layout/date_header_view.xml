@@ -5,9 +5,12 @@
 -->
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dateTextView"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="12dp"
-    android:paddingVertical="18dp"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="10dp"
+    android:background="@drawable/bg_date_header_pill"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="8dp"
     android:textAppearance="?attr/textAppearanceTitleSmall"
     android:textColor="?attr/colorOnSurface" />
