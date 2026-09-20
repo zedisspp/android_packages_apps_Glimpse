@@ -42,12 +42,12 @@
             android:contentDescription="@string/double_tap_to_seek_seconds_title"
             app:haloRadius="20dp"
             app:labelBehavior="gone"
-            app:stepSize="5"
+            android:stepSize="5"
             app:thumbHeight="24dp"
             app:thumbWidth="24dp"
             app:trackHeight="8dp"
-            app:valueFrom="5"
-            app:valueTo="30" />
+            android:valueFrom="5"
+            android:valueTo="30" />
 
         <TextView
             android:id="@+id/slider_value"
