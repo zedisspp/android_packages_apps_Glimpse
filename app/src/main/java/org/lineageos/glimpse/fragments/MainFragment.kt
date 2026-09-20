@@ -6,6 +6,7 @@
 package org.lineageos.glimpse.fragments
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 super.onPageSelected(position)
 
                 navigationBarView.menu.getItem(position).isChecked = true
-                navigationBarView.refreshBackdrop()
             }
         }
     }
@@ -75,10 +75,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             windowInsets
         }
 
-        // Render a small, downsampled backdrop behind the dock. The snapshot
-        // is refreshed after page changes and when scrolling settles, rather
-        // than every frame, to keep the blur inexpensive.
-        navigationBarView.setBackdropSource(viewPager2)
+        // Keep the dock fully opaque so scrolling content never shows through it.
+        (navigationBarView.background as? MaterialShapeDrawable)?.let { dockBackground ->
+            val surfaceColor = MaterialColors.getColor(
+                navigationBarView,
+                com.google.android.material.R.attr.colorSurfaceContainerHigh,
+            )
+            dockBackground.fillColor = ColorStateList.valueOf(surfaceColor)
+        }
 
         // Toolbar
         toolbar.setupWithNavController(findNavController())
