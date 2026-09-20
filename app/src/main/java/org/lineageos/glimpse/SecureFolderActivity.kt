@@ -42,6 +42,7 @@ class SecureFolderActivity : AppCompatActivity() {
     private var vaultKey: ByteArray? = null
     private lateinit var list: LinearLayout
     private var pickerOpen = false
+    private var refreshGeneration = 0
     private val executor = Executors.newSingleThreadExecutor()
 
     private val onSurface get() = MaterialColors.getColor(window.decorView, com.google.android.material.R.attr.colorOnSurface)
@@ -392,11 +393,17 @@ class SecureFolderActivity : AppCompatActivity() {
     }
 
     private fun refresh() {
+        // A picker result and onResume() can arrive close together. Both may
+        // start a background read, and both callbacks would otherwise append
+        // their results to the same container. Keep only the newest refresh.
+        val generation = ++refreshGeneration
         list.removeAllViews()
         val key = vaultKey ?: return
         executor.execute {
             val entries = vault.entries(key)
             runOnUiThread {
+                if (generation != refreshGeneration || vaultKey == null) return@runOnUiThread
+                list.removeAllViews()
                 if (entries.isEmpty()) {
                     list.addView(emptyState())
                     return@runOnUiThread
