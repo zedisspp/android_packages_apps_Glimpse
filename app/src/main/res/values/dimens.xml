@@ -12,4 +12,8 @@
     <!-- Space content should reserve above the dock so its last row rests
          just clear of it (dock_margin_bottom + dock_height + a small gap) -->
     <dimen name="glimpse_dock_content_reserved_space">92dp</dimen>
+    <!-- Settings button, docked side by side with the floating dock -->
+    <dimen name="glimpse_dock_settings_size">64dp</dimen>
+    <dimen name="glimpse_dock_settings_gap">8dp</dimen>
+    <dimen name="glimpse_dock_settings_corner_radius">20dp</dimen>
 </resources>

@@ -43,6 +43,19 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <!-- Settings button docked side by side with the floating dock -->
+    <style name="Widget.Glimpse.Button.Dock.Settings" parent="?attr/materialIconButtonFilledStyle">
+        <item name="shapeAppearance">@style/ShapeAppearance.Glimpse.Dock.Settings</item>
+        <item name="backgroundTint">?attr/colorTertiaryContainer</item>
+        <item name="iconTint">?attr/colorOnTertiaryContainer</item>
+    </style>
+
+    <!-- Rounded square (squircle) shape used by the docked settings button -->
+    <style name="ShapeAppearance.Glimpse.Dock.Settings" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/glimpse_dock_settings_corner_radius</item>
+    </style>
+
     <!-- Media viewer -->
     <style name="Theme.Glimpse.MediaViewer" parent="Theme.Material3Expressive.Dark.NoActionBar">
         <item name="android:windowLayoutInDisplayCutoutMode">always</item>

@@ -31,6 +31,7 @@ import org.lineageos.glimpse.models.AlbumType
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     // Views
+    private val dockContainer by getViewProperty<View>(R.id.dockContainer)
     private val navigationBarView by getViewProperty<NavigationBarView>(R.id.navigationBarView)
     private val settingsMaterialButton by getViewProperty<MaterialButton>(R.id.settingsMaterialButton)
     private val toolbar by getViewProperty<MaterialToolbar>(R.id.toolbar)
@@ -53,7 +54,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         val dockMarginHorizontal =
             resources.getDimensionPixelSize(R.dimen.glimpse_dock_margin_horizontal)
         val dockMarginBottom = resources.getDimensionPixelSize(R.dimen.glimpse_dock_margin_bottom)
-        ViewCompat.setOnApplyWindowInsetsListener(navigationBarView) { dock, windowInsets ->
+        ViewCompat.setOnApplyWindowInsetsListener(dockContainer) { dock, windowInsets ->
             val insets = windowInsets.getInsets(
                 WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
             )
