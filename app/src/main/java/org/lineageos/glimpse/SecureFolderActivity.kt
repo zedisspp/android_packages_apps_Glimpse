@@ -46,7 +46,7 @@ class SecureFolderActivity : AppCompatActivity() {
         val title = TextView(this).apply {
             text = getString(R.string.secure_folder_title)
             textSize = 28f
-            setTextColor(com.google.android.material.color.MaterialColors.getColor(this@SecureFolderActivity, com.google.android.material.R.attr.colorOnSurface))
+            setTextColor(com.google.android.material.color.MaterialColors.getColor(this, com.google.android.material.R.attr.colorOnSurface))
         }
         val subtitle = TextView(this).apply {
             text = getString(R.string.secure_folder_description)
