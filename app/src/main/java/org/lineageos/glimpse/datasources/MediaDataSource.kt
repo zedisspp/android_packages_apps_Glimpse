@@ -43,6 +43,7 @@ interface MediaDataSource {
     fun reels(
         mediaType: MediaType?,
         mimeType: String?,
+        searchQuery: String? = null,
     ): Flow<MediaRequestStatus<List<Media>>>
 
     /**

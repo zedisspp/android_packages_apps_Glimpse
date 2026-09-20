@@ -69,6 +69,7 @@ class AlbumViewModel(application: Application) : GlimpseViewModel(application) {
         val albumUri: Uri? = null,
         val mediaType: MediaType? = null,
         val mimeType: String? = null,
+        val searchQuery: String? = null,
     )
 
     private val _albumRequest = MutableStateFlow<AlbumRequest?>(null)
@@ -83,7 +84,12 @@ class AlbumViewModel(application: Application) : GlimpseViewModel(application) {
         .flatMapLatest { albumRequest ->
             when (albumRequest.albumType) {
                 AlbumType.REELS ->
-                    mediaRepository.reels(albumRequest.mediaType).addAlbum(REELS_ALBUM)
+                    mediaRepository.reels(
+                        mediaType = albumRequest.mediaType,
+                        searchQuery = albumRequest.searchQuery,
+                    ).addAlbum(
+                        if (albumRequest.searchQuery.isNullOrBlank()) REELS_ALBUM else SEARCH_ALBUM
+                    )
 
                 AlbumType.FAVORITES ->
                     mediaRepository.favorites().addAlbum(FAVORITES_ALBUM)
@@ -161,6 +167,7 @@ class AlbumViewModel(application: Application) : GlimpseViewModel(application) {
         private val REELS_ALBUM = dummyAlbum("Reels")
         private val FAVORITES_ALBUM = dummyAlbum("Favorites")
         private val TRASH_ALBUM = dummyAlbum("Trash")
+        private val SEARCH_ALBUM = dummyAlbum("Search")
 
         private fun dummyAlbum(name: String) = Album(
             Uri.EMPTY,

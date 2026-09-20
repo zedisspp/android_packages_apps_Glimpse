@@ -24,6 +24,7 @@ import org.lineageos.glimpse.models.Thumbnail
 import org.lineageos.glimpse.query.Query
 import org.lineageos.glimpse.query.and
 import org.lineageos.glimpse.query.eq
+import org.lineageos.glimpse.query.like
 import org.lineageos.glimpse.query.`in`
 import org.lineageos.glimpse.query.or
 import org.lineageos.glimpse.query.query
@@ -141,21 +142,39 @@ class LocalDataSource(
         } ?: RequestStatus.Error(MediaError.NOT_FOUND)
     }
 
-    override fun reels(mediaType: MediaType?, mimeType: String?) = contentResolver.queryFlow(
+    override fun reels(
+        mediaType: MediaType?,
+        mimeType: String?,
+        searchQuery: String?,
+    ) = contentResolver.queryFlow(
         filesUri,
         mediaProjection,
         bundleOf(
             ContentResolver.QUERY_ARG_SQL_SELECTION to query {
                 val mediaTypeSelection = mediaType.filterQuery
                 val mimeTypeSelection = MediaStore.Files.FileColumns.MIME_TYPE eq Query.ARG
+                val searchSelection = (
+                    MediaStore.Files.FileColumns.DISPLAY_NAME like Query.ARG
+                ) or (
+                    MediaStore.Files.FileColumns.BUCKET_DISPLAY_NAME like Query.ARG
+                )
 
-                mimeType?.let {
+                val baseSelection = mimeType?.let {
                     mediaTypeSelection and mimeTypeSelection
                 } ?: mediaTypeSelection
+
+                searchQuery?.trim()?.takeIf { it.isNotEmpty() }?.let {
+                    baseSelection and searchSelection
+                } ?: baseSelection
             },
-            ContentResolver.QUERY_ARG_SQL_SELECTION_ARGS to listOfNotNull(
-                mimeType,
-            ).toTypedArray(),
+            ContentResolver.QUERY_ARG_SQL_SELECTION_ARGS to buildList {
+                mimeType?.let(::add)
+                searchQuery?.trim()?.takeIf { it.isNotEmpty() }?.let {
+                    val pattern = "%$it%"
+                    add(pattern)
+                    add(pattern)
+                }
+            }.toTypedArray(),
             ContentResolver.QUERY_ARG_SORT_COLUMNS to arrayOf(
                 "${MediaStore.Files.FileColumns.DATE_MODIFIED} DESC",
             ),

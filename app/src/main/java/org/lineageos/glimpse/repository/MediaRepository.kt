@@ -50,7 +50,8 @@ class MediaRepository(
     fun reels(
         mediaType: MediaType? = null,
         mimeType: String? = null,
-    ) = localDataSource.reels(mediaType, mimeType)
+        searchQuery: String? = null,
+    ) = localDataSource.reels(mediaType, mimeType, searchQuery)
 
     /**
      * @see MediaDataSource.favorites

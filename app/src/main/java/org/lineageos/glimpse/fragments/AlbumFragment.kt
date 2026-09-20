@@ -261,6 +261,8 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
         get() = requireArguments().getSerializable(ARG_MEDIA_TYPE, MediaType::class)
     private val mimeType: String?
         get() = requireArguments().getString(ARG_MIME_TYPE, null)
+    private val searchQuery: String?
+        get() = requireArguments().getString(ARG_SEARCH_QUERY, null)
     private val hideToolbar: Boolean
         get() = requireArguments().getBoolean(ARG_HIDE_TOOLBAR, false)
 
@@ -305,6 +307,9 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
         appBarLayout.isVisible = !hideToolbar
 
         toolbar.setupWithNavController(findNavController())
+        if (!searchQuery.isNullOrBlank()) {
+            toolbar.title = getString(R.string.search_results_title, searchQuery)
+        }
 
         val context = requireContext()
 
@@ -430,6 +435,7 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
                                     albumUri = albumUri,
                                     mediaType = mediaType,
                                     mimeType = it.mimeType ?: mimeType,
+                                    searchQuery = searchQuery,
                                 )
                             )
                         }
@@ -440,6 +446,7 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
                                 albumUri = albumUri,
                                 mediaType = mediaType,
                                 mimeType = mimeType,
+                                searchQuery = searchQuery,
                             )
                         )
                     }
@@ -626,6 +633,7 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
         private const val ARG_ALBUM_URI = "album_uri"
         private const val ARG_MEDIA_TYPE = "media_type"
         private const val ARG_MIME_TYPE = "mime_type"
+        private const val ARG_SEARCH_QUERY = "search_query"
         private const val ARG_HIDE_TOOLBAR = "hide_toolbar"
 
         /**
@@ -640,12 +648,14 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
             albumUri: Uri? = null,
             fileType: MediaType? = null,
             mimeType: String? = null,
+            searchQuery: String? = null,
             hideToolbar: Boolean = false,
         ) = bundleOf(
             ARG_ALBUM_TYPE to albumType,
             ARG_ALBUM_URI to albumUri,
             ARG_MEDIA_TYPE to fileType,
             ARG_MIME_TYPE to mimeType,
+            ARG_SEARCH_QUERY to searchQuery,
             ARG_HIDE_TOOLBAR to hideToolbar,
         )
     }
