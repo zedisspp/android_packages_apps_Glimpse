@@ -104,20 +104,25 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         viewPager2.setPageTransformer(null)
         viewPager2.registerOnPageChangeCallback(onPageChangeCallback)
 
-        val scrollRefresh = object : android.view.ViewTreeObserver.OnScrollChangedListener {
-            private var refreshPending = false
+        // Keep the backdrop live while the gallery moves. A scroll-listener with
+        // a long delayed refresh makes the blur look like a slideshow. Instead,
+        // sample at most once every ~33 ms (about 30 fps), only while the root is
+        // actually drawing. This keeps the backdrop visually fluid without
+        // forcing a full-resolution screenshot every frame.
+        val frameRefresh = object : android.view.ViewTreeObserver.OnPreDrawListener {
+            private var lastRefreshNanos = 0L
 
-            override fun onScrollChanged() {
-                if (refreshPending) return
-                refreshPending = true
-                navigationBarView.postDelayed({
-                    refreshPending = false
+            override fun onPreDraw(): Boolean {
+                val now = System.nanoTime()
+                if (now - lastRefreshNanos >= 33_000_000L) {
+                    lastRefreshNanos = now
                     navigationBarView.refreshBackdrop()
-                }, 140L)
+                }
+                return true
             }
         }
-        view.viewTreeObserver.addOnScrollChangedListener(scrollRefresh)
-        view.setTag(R.id.glimpse_scroll_refresh_listener, scrollRefresh)
+        view.viewTreeObserver.addOnPreDrawListener(frameRefresh)
+        view.setTag(R.id.glimpse_scroll_refresh_listener, frameRefresh)
 
         navigationBarView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -143,8 +148,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onDestroyView() {
         view?.let { root ->
-            (root.getTag(R.id.glimpse_scroll_refresh_listener) as? android.view.ViewTreeObserver.OnScrollChangedListener)?.let { listener ->
-                root.viewTreeObserver.removeOnScrollChangedListener(listener)
+            (root.getTag(R.id.glimpse_scroll_refresh_listener) as? android.view.ViewTreeObserver.OnPreDrawListener)?.let { listener ->
+                root.viewTreeObserver.removeOnPreDrawListener(listener)
             }
         }
 

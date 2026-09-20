@@ -47,8 +47,8 @@ class BackdropBlurBottomNavigationView @JvmOverloads constructor(
 
     private var sourceView: View? = null
     private var snapshot: Bitmap? = null
-    private var blurRadius = 18f
-    private var snapshotScale = 0.22f
+    private var blurRadius = 30f
+    private var snapshotScale = 0.35f
 
     init {
         // The blurred backdrop is rendered by this class; do not let the
@@ -146,6 +146,6 @@ class BackdropBlurBottomNavigationView @JvmOverloads constructor(
             this,
             com.google.android.material.R.attr.colorSurfaceContainerHigh,
         )
-        return (surface and 0x00ffffff) or (0xA0 shl 24)
+        return (surface and 0x00ffffff) or (0x58 shl 24)
     }
 }
