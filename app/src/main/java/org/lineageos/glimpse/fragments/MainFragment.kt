@@ -19,7 +19,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.navigation.NavigationBarView
+import org.lineageos.glimpse.ui.BackdropBlurBottomNavigationView
 import org.lineageos.glimpse.R
 import org.lineageos.glimpse.SettingsActivity
 import org.lineageos.glimpse.ext.getViewProperty
@@ -27,7 +27,7 @@ import org.lineageos.glimpse.models.AlbumType
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     // Views
-    private val navigationBarView by getViewProperty<NavigationBarView>(R.id.navigationBarView)
+    private val navigationBarView by getViewProperty<BackdropBlurBottomNavigationView>(R.id.navigationBarView)
     private val settingsMaterialButton by getViewProperty<MaterialButton>(R.id.settingsMaterialButton)
     private val toolbar by getViewProperty<MaterialToolbar>(R.id.toolbar)
     private val viewPager2 by getViewProperty<ViewPager2>(R.id.viewPager2)

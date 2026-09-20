@@ -32,12 +32,13 @@ import kotlin.math.ceil
 class BackdropBlurBottomNavigationView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.bottomNavigationStyle,
+    defStyleAttr: Int = 0,
 ) : BottomNavigationView(context, attrs, defStyleAttr) {
 
     private val snapshotPaint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
     private val overlayPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val clipRect = RectF()
+    private val clipPath = android.graphics.Path()
     private val blurNode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
         RenderNode("GlimpseDockBlur")
     } else {
@@ -114,7 +115,9 @@ class BackdropBlurBottomNavigationView @JvmOverloads constructor(
             clipRect.set(0f, 0f, width.toFloat(), height.toFloat())
             val radius = resources.getDimension(R.dimen.glimpse_dock_corner_radius)
             canvas.save()
-            canvas.clipRoundRect(clipRect, radius, radius, android.graphics.Region.Op.INTERSECT)
+            clipPath.reset()
+            clipPath.addRoundRect(clipRect, radius, radius, android.graphics.Path.Direction.CW)
+            canvas.clipPath(clipPath)
             canvas.drawRenderNode(blurNode)
 
             // A subtle translucent surface tint keeps icons/text readable while
