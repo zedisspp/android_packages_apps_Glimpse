@@ -110,4 +110,9 @@
     <string name="hide_native_seek_buttons_description">Visszatekerés és előretekerés gombok elrejtése a videolejátszó vezérlői közül</string>
     <string name="remember_video_playback_position_enabled_title">Lejátszási pozíció megjegyzése</string>
     <string name="remember_video_playback_position_enabled_description">Videók folytatása az utolsó leállítási pozíciótól</string>
+    <string name="language_title">Nyelv</string>
+    <string name="language_system_default">Rendszer alapértelmezése</string>
+    <string name="search_media_hint">Fotók és videók keresése</string>
+    <string name="search_media_helper">Fájl- és albumneveket keres ezen az eszközön</string>
+    <string name="search_results_title">Találatok erre: „%1$s”</string>
 </resources>

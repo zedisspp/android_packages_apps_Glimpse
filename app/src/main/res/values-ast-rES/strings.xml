@@ -82,4 +82,9 @@
     <string name="set_wallpaper_lock_screen">Pantalla de bloquéu</string>
     <string name="set_wallpaper_both">Pantalla d\'aniciu y de bloquéu</string>
     <string name="warning_bin_time_period">Los ficheros van desaniciase permanentemente dempués de 30 díes.</string>
+    <string name="language_title">Language</string>
+    <string name="language_system_default">System default</string>
+    <string name="search_media_hint">Search photos and videos</string>
+    <string name="search_media_helper">Searches file names and album names on this device</string>
+    <string name="search_results_title">Results for “%1$s”</string>
 </resources>

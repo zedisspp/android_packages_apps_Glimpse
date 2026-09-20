@@ -83,4 +83,9 @@
     <string name="set_wallpaper_lock_screen">鎖定畫面</string>
     <string name="set_wallpaper_both">桌面和鎖定畫面</string>
     <string name="warning_bin_time_period">檔案將會在 30 天後永久刪除。</string>
+    <string name="language_title">語言</string>
+    <string name="language_system_default">系統預設</string>
+    <string name="search_media_hint">搜尋照片和影片</string>
+    <string name="search_media_helper">搜尋此裝置上的檔案名稱和相簿名稱</string>
+    <string name="search_results_title">「%1$s」的結果</string>
 </resources>

@@ -92,6 +92,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         settingsMaterialButton.setOnClickListener {
             val intent = Intent(context, SettingsActivity::class.java)
             startActivity(intent)
+            @Suppress("DEPRECATION")
+            requireActivity().overridePendingTransition(R.anim.glimpse_enter, R.anim.glimpse_exit)
         }
 
         // ViewPager2
@@ -101,6 +103,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             override fun createFragment(position: Int) = fragments[position]()
         }
         viewPager2.offscreenPageLimit = fragments.size
+        viewPager2.setPageTransformer { page, position ->
+            val absPosition = kotlin.math.abs(position)
+            page.alpha = 0.72f + (1f - absPosition.coerceAtMost(1f)) * 0.28f
+            page.translationX = -position * page.width * 0.08f
+            val scale = 0.985f + (1f - absPosition.coerceAtMost(1f)) * 0.015f
+            page.scaleX = scale
+            page.scaleY = scale
+        }
         viewPager2.registerOnPageChangeCallback(onPageChangeCallback)
 
         navigationBarView.setOnItemSelectedListener { item ->

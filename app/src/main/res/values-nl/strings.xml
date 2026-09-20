@@ -94,4 +94,9 @@
     <string name="set_wallpaper_home_screen">Startscherm</string>
     <string name="set_wallpaper_lock_screen">Vergrendelscherm</string>
     <string name="set_wallpaper_both">Start- en vergrendelscherm</string>
+    <string name="language_title">Taal</string>
+    <string name="language_system_default">Systeemstandaard</string>
+    <string name="search_media_hint">Foto’s en video’s zoeken</string>
+    <string name="search_media_helper">Zoekt naar bestands- en album­namen op dit apparaat</string>
+    <string name="search_results_title">Resultaten voor “%1$s”</string>
 </resources>

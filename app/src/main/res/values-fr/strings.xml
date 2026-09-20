@@ -97,4 +97,9 @@
     <string name="warning_bin_time_period">Les fichiers seront définitivement supprimés après 30 jours.</string>
     <string name="motion_photo_show_video">Afficher la vidéo</string>
     <string name="motion_photo_show_photo">Afficher la photo</string>
+    <string name="language_title">Langue</string>
+    <string name="language_system_default">Par défaut du système</string>
+    <string name="search_media_hint">Rechercher des photos et des vidéos</string>
+    <string name="search_media_helper">Recherche les noms de fichiers et d’albums sur cet appareil</string>
+    <string name="search_results_title">Résultats pour « %1$s »</string>
 </resources>

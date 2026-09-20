@@ -99,4 +99,9 @@
     <string name="hide_native_seek_buttons_description">从视频播放器控件中隐藏倒带和快进按钮</string>
     <string name="remember_video_playback_position_enabled_title">记住播放位置</string>
     <string name="remember_video_playback_position_enabled_description">从上次停止的位置继续播放视频</string>
+    <string name="language_title">语言</string>
+    <string name="language_system_default">系统默认</string>
+    <string name="search_media_hint">搜索照片和视频</string>
+    <string name="search_media_helper">搜索此设备上的文件名和相册名称</string>
+    <string name="search_results_title">“%1$s”的结果</string>
 </resources>

@@ -131,4 +131,9 @@
     <string name="hide_native_seek_buttons_description">Скрыть кнопки перемотки назад и вперед в панели управления видеоплеером</string>
     <string name="remember_video_playback_position_enabled_title">Запомнить место воспроизведения</string>
     <string name="remember_video_playback_position_enabled_description">Возобновление просмотра видео с места остановки</string>
+    <string name="language_title">Язык</string>
+    <string name="language_system_default">Системный по умолчанию</string>
+    <string name="search_media_hint">Поиск фото и видео</string>
+    <string name="search_media_helper">Поиск имён файлов и альбомов на этом устройстве</string>
+    <string name="search_results_title">Результаты для «%1$s»</string>
 </resources>

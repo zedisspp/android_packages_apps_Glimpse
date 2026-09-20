@@ -99,4 +99,9 @@
     <string name="hide_native_seek_buttons_description">Ẩn các nút tua lại và tua nhanh trên điều khiển trình phát video</string>
     <string name="remember_video_playback_position_enabled_title">Nhớ vị trí phát lại</string>
     <string name="remember_video_playback_position_enabled_description">Tiếp tục từ vị trí lần cuối dừng phát video</string>
+    <string name="language_title">Ngôn ngữ</string>
+    <string name="language_system_default">Mặc định của hệ thống</string>
+    <string name="search_media_hint">Tìm kiếm ảnh và video</string>
+    <string name="search_media_helper">Tìm kiếm tên tệp và album trên thiết bị này</string>
+    <string name="search_results_title">Kết quả cho “%1$s”</string>
 </resources>

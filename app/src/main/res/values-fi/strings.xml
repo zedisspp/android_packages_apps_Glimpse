@@ -5,4 +5,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="library_title">Kirjasto</string>
+    <string name="language_title">Kieli</string>
+    <string name="language_system_default">Järjestelmän oletus</string>
+    <string name="search_media_hint">Hae kuvia ja videoita</string>
+    <string name="search_media_helper">Hakee tämän laitteen tiedosto- ja albuminimistä</string>
+    <string name="search_results_title">Tulokset haulle ”%1$s”</string>
 </resources>

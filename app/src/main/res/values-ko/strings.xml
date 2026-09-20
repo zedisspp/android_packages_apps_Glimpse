@@ -80,4 +80,9 @@
     <string name="warning_bin_time_period">파일은 30일 뒤에 완전히 삭제됩니다.</string>
     <string name="motion_photo_show_video">동영상 표시</string>
     <string name="motion_photo_show_photo">사진 표시</string>
+    <string name="language_title">언어</string>
+    <string name="language_system_default">시스템 기본값</string>
+    <string name="search_media_hint">사진 및 동영상 검색</string>
+    <string name="search_media_helper">이 기기의 파일 이름과 앨범 이름을 검색합니다</string>
+    <string name="search_results_title">“%1$s”의 결과</string>
 </resources>

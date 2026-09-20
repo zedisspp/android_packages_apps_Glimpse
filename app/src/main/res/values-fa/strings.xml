@@ -95,4 +95,9 @@
     <string name="set_wallpaper_lock_screen">صفحه قفل</string>
     <string name="set_wallpaper_both">صفحه اصلی و قفل</string>
     <string name="warning_bin_time_period">فایل‌ها پس از ۳۰ روز به طور دائمی حذف خواهند شد.</string>
+    <string name="language_title">زبان</string>
+    <string name="language_system_default">پیش‌فرض سیستم</string>
+    <string name="search_media_hint">جستجوی عکس‌ها و ویدیوها</string>
+    <string name="search_media_helper">نام فایل‌ها و آلبوم‌ها را در این دستگاه جستجو می‌کند</string>
+    <string name="search_results_title">نتایج برای «%1$s»</string>
 </resources>

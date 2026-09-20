@@ -97,4 +97,9 @@
     <string name="warning_bin_time_period">Skedarët do të fshihen përgjithmonë pas 30 ditësh.</string>
     <string name="motion_photo_show_video">Shfaq videon</string>
     <string name="motion_photo_show_photo">Shfaq foton</string>
+    <string name="language_title">Gjuha</string>
+    <string name="language_system_default">Parazgjedhja e sistemit</string>
+    <string name="search_media_hint">Kërko foto dhe video</string>
+    <string name="search_media_helper">Kërkon emrat e skedarëve dhe albumeve në këtë pajisje</string>
+    <string name="search_results_title">Rezultatet për “%1$s”</string>
 </resources>

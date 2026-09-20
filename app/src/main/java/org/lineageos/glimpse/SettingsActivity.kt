@@ -15,6 +15,8 @@ import androidx.annotation.CallSuper
 import androidx.annotation.Px
 import androidx.annotation.XmlRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -24,6 +26,7 @@ import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import org.lineageos.glimpse.ext.applyThemeMode
+import org.lineageos.glimpse.ext.languageTag
 import org.lineageos.glimpse.ext.setOffset
 import org.lineageos.glimpse.ext.themeMode
 import kotlin.reflect.safeCast
@@ -56,6 +59,8 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         android.R.id.home -> {
             onBackPressedDispatcher.onBackPressed()
+            @Suppress("DEPRECATION")
+            overridePendingTransition(R.anim.glimpse_pop_enter, R.anim.glimpse_pop_exit)
             true
         }
 
@@ -145,10 +150,24 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
 
                 true
             }
+
+            findPreference<ListPreference>(LANGUAGE_PREFERENCE_KEY)?.setOnPreferenceChangeListener { _, newValue ->
+                val languageTag = newValue as String
+                preferenceManager.sharedPreferences?.languageTag = languageTag
+                AppCompatDelegate.setApplicationLocales(
+                    if (languageTag.isBlank()) {
+                        LocaleListCompat.getEmptyLocaleList()
+                    } else {
+                        LocaleListCompat.forLanguageTags(languageTag)
+                    }
+                )
+                true
+            }
         }
 
         companion object {
             private const val THEME_MODE_PREFERENCE_KEY = "theme_mode"
+            private const val LANGUAGE_PREFERENCE_KEY = "language"
         }
     }
 }

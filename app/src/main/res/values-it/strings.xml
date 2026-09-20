@@ -110,4 +110,9 @@
     <string name="hide_native_seek_buttons_description">Nascondi i pulsanti di salto in avanti e indietro dai controlli del lettore video</string>
     <string name="remember_video_playback_position_enabled_title">Memorizza l\'avanzamento della riproduzione</string>
     <string name="remember_video_playback_position_enabled_description">Riprendi i video dal punto dell\'ultima interruzione</string>
+    <string name="language_title">Lingua</string>
+    <string name="language_system_default">Predefinita di sistema</string>
+    <string name="search_media_hint">Cerca foto e video</string>
+    <string name="search_media_helper">Cerca i nomi dei file e degli album su questo dispositivo</string>
+    <string name="search_results_title">Risultati per “%1$s”</string>
 </resources>

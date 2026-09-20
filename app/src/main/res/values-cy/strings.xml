@@ -21,4 +21,9 @@
     <string name="picker_done">Iawn</string>
     <string name="motion_photo_show_video">Dangos fideo</string>
     <string name="motion_photo_show_photo">Dangos llun</string>
+    <string name="language_title">Language</string>
+    <string name="language_system_default">System default</string>
+    <string name="search_media_hint">Search photos and videos</string>
+    <string name="search_media_helper">Searches file names and album names on this device</string>
+    <string name="search_results_title">Results for “%1$s”</string>
 </resources>

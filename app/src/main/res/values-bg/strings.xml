@@ -95,4 +95,9 @@
     <string name="set_wallpaper_lock_screen">Заключен екран</string>
     <string name="set_wallpaper_both">Начален и заключен екран</string>
     <string name="warning_bin_time_period">Файловете ще бъдат безвъзвратно изтрити след 30 дена</string>
+    <string name="language_title">Език</string>
+    <string name="language_system_default">Системен по подразбиране</string>
+    <string name="search_media_hint">Търсене на снимки и видеоклипове</string>
+    <string name="search_media_helper">Търси имена на файлове и албуми на това устройство</string>
+    <string name="search_results_title">Резултати за „%1$s“</string>
 </resources>

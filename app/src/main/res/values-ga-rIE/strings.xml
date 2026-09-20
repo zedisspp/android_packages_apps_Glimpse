@@ -143,4 +143,9 @@
     <string name="hide_native_seek_buttons_description">Folaigh na cnaipí athchasaidh agus tapaigh ó na rialuithe seinnteoirí físeáin</string>
     <string name="remember_video_playback_position_enabled_title">Cuimhnigh seasamh athsheinm</string>
     <string name="remember_video_playback_position_enabled_description">Atosaigh físeáin ón suíomh deireanach a stopadh</string>
+    <string name="language_title">Language</string>
+    <string name="language_system_default">System default</string>
+    <string name="search_media_hint">Search photos and videos</string>
+    <string name="search_media_helper">Searches file names and album names on this device</string>
+    <string name="search_results_title">Results for “%1$s”</string>
 </resources>

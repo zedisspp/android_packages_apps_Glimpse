@@ -99,4 +99,9 @@
     <string name="hide_native_seek_buttons_description">動画プレーヤーのコントロールから巻き戻しと早送りボタンを隠します</string>
     <string name="remember_video_playback_position_enabled_title">再生位置を記憶する</string>
     <string name="remember_video_playback_position_enabled_description">最後に停止した位置から動画を再開します</string>
+    <string name="language_title">言語</string>
+    <string name="language_system_default">システムのデフォルト</string>
+    <string name="search_media_hint">写真と動画を検索</string>
+    <string name="search_media_helper">このデバイスのファイル名とアルバム名を検索します</string>
+    <string name="search_results_title">「%1$s」の検索結果</string>
 </resources>

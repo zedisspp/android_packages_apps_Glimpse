@@ -95,4 +95,9 @@
     <string name="set_wallpaper_lock_screen">Οθόνη κλειδώματος</string>
     <string name="set_wallpaper_both">Αρχική και οθόνη κλειδώματος</string>
     <string name="warning_bin_time_period">Τα αρχεία θα διαγραφούν οριστικά μετά από 30 ημέρες.</string>
+    <string name="language_title">Γλώσσα</string>
+    <string name="language_system_default">Προεπιλογή συστήματος</string>
+    <string name="search_media_hint">Αναζήτηση φωτογραφιών και βίντεο</string>
+    <string name="search_media_helper">Αναζητά ονόματα αρχείων και άλμπουμ σε αυτήν τη συσκευή</string>
+    <string name="search_results_title">Αποτελέσματα για «%1$s»</string>
 </resources>

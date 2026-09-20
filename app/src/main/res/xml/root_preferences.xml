@@ -11,6 +11,15 @@
         app:title="@string/appearance_header">
 
         <ListPreference
+            app:defaultValue=""
+            app:entries="@array/language_entries"
+            app:entryValues="@array/language_values"
+            app:icon="@drawable/ic_language"
+            app:key="language"
+            app:title="@string/language_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
             app:defaultValue="system"
             app:entries="@array/theme_mode_entries"
             app:entryValues="@array/theme_mode_values"

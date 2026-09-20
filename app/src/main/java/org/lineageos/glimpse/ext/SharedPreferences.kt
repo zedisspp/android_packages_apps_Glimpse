@@ -41,6 +41,24 @@ fun SharedPreferences.applyThemeMode() {
     )
 }
 
+
+// App language. Empty means follow the system locale.
+private const val LANGUAGE_KEY = "language"
+
+var SharedPreferences.languageTag: String
+    get() = getString(LANGUAGE_KEY, "") ?: ""
+    set(value) = edit { putString(LANGUAGE_KEY, value) }
+
+fun SharedPreferences.applyLanguage() {
+    AppCompatDelegate.setApplicationLocales(
+        if (languageTag.isBlank()) {
+            androidx.core.os.LocaleListCompat.getEmptyLocaleList()
+        } else {
+            androidx.core.os.LocaleListCompat.forLanguageTags(languageTag)
+        }
+    )
+}
+
 // All files access dialog dismissed
 private const val MANAGE_MEDIA_PERMISSION_DIALOG_DISMISSED_KEY =
     "manage_media_permission_dialog_dismissed"

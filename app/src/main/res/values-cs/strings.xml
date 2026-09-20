@@ -117,4 +117,9 @@
     <string name="set_wallpaper_lock_screen">Zamykací obrazovka</string>
     <string name="set_wallpaper_both">Domovská a zamykací obrazovka</string>
     <string name="warning_bin_time_period">Soubory budou trvale odstraněny po 30 dnech.</string>
+    <string name="language_title">Jazyk</string>
+    <string name="language_system_default">Výchozí podle systému</string>
+    <string name="search_media_hint">Hledat fotky a videa</string>
+    <string name="search_media_helper">Prohledává názvy souborů a alb v tomto zařízení</string>
+    <string name="search_results_title">Výsledky pro „%1$s“</string>
 </resources>

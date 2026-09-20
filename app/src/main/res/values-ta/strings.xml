@@ -95,4 +95,9 @@
     <string name="set_wallpaper_lock_screen">பூட்டுத் திரை</string>
     <string name="set_wallpaper_both">முகப்புத் திரையும், பூட்டுத் திரையும்</string>
     <string name="warning_bin_time_period">30 நாளுக்குப் பிறகு கோப்புகள் நிலையாக நீக்கப்படும்.</string>
+    <string name="language_title">Language</string>
+    <string name="language_system_default">System default</string>
+    <string name="search_media_hint">Search photos and videos</string>
+    <string name="search_media_helper">Searches file names and album names on this device</string>
+    <string name="search_results_title">Results for “%1$s”</string>
 </resources>

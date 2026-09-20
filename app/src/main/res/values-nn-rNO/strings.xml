@@ -97,4 +97,9 @@
     <string name="warning_bin_time_period">Filer vert sletta for godt etter 30 dagar.</string>
     <string name="motion_photo_show_video">Vis video</string>
     <string name="motion_photo_show_photo">Vis bilete</string>
+    <string name="language_title">Language</string>
+    <string name="language_system_default">System default</string>
+    <string name="search_media_hint">Search photos and videos</string>
+    <string name="search_media_helper">Searches file names and album names on this device</string>
+    <string name="search_results_title">Results for “%1$s”</string>
 </resources>

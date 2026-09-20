@@ -132,4 +132,9 @@
     <string name="hide_native_seek_buttons_description">Ukrywaj przyciski przewijania do tyłu i do przodu w panelu sterowania odtwarzacza wideo</string>
     <string name="remember_video_playback_position_enabled_title">Zapamiętuj pozycję odtwarzania</string>
     <string name="remember_video_playback_position_enabled_description">Wznawiaj wideo z ostatniej zatrzymanej pozycji</string>
+    <string name="language_title">Język</string>
+    <string name="language_system_default">Domyślny systemu</string>
+    <string name="search_media_hint">Szukaj zdjęć i filmów</string>
+    <string name="search_media_helper">Przeszukuje nazwy plików i albumów na tym urządzeniu</string>
+    <string name="search_results_title">Wyniki dla „%1$s”</string>
 </resources>

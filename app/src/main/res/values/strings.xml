@@ -146,6 +146,10 @@
     <string name="video_header">Video</string>
     <string name="about_header">About</string>
 
+    <!-- Language preferences -->
+    <string name="language_title">Language</string>
+    <string name="language_system_default">System default</string>
+
     <!-- Appearance preferences -->
     <string name="theme_mode_title">Theme</string>
     <string name="theme_mode_light">Light</string>

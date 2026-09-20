@@ -6,4 +6,9 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="file_action_delete_forever">Видалити назавжди</string>
     <string name="warning_bin_time_period">Файли будуть видалені назавжди через 30 днів.</string>
+    <string name="language_title">Мова</string>
+    <string name="language_system_default">За замовчуванням у системі</string>
+    <string name="search_media_hint">Пошук фото й відео</string>
+    <string name="search_media_helper">Пошук назв файлів і альбомів на цьому пристрої</string>
+    <string name="search_results_title">Результати для «%1$s»</string>
 </resources>

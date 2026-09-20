@@ -22,4 +22,30 @@
         <item>dark</item>
         <item>system</item>
     </string-array>
+
+    <!-- App language. Names are intentionally shown in their native language. -->
+    <string-array name="language_entries" translatable="false">
+        <item>@string/language_system_default</item>
+        <item>Asturianu</item><item>Azərbaycanca</item><item>Български</item><item>Català</item>
+        <item>Čeština</item><item>Cymraeg</item><item>Deutsch</item><item>Ελληνικά</item>
+        <item>English</item><item>Español</item><item>فارسی</item><item>Suomi</item>
+        <item>Français</item><item>Furlan</item><item>Gaeilge</item><item>Magyar</item>
+        <item>Bahasa Indonesia</item><item>Íslenska</item><item>Italiano</item><item>עברית</item>
+        <item>日本語</item><item>ქართული</item><item>한국어</item><item>Nederlands</item>
+        <item>Norsk nynorsk</item><item>Polski</item><item>Português (Brasil)</item><item>Português (Portugal)</item>
+        <item>Română</item><item>Русский</item><item>Sardu</item><item>Slovenščina</item>
+        <item>Shqip</item><item>தமிழ்</item><item>Türkçe</item><item>ئۇيغۇرچە</item>
+        <item>Українська</item><item>Tiếng Việt</item><item>简体中文</item><item>繁體中文</item>
+    </string-array>
+
+    <string-array name="language_values" translatable="false">
+        <item></item><item>ast-ES</item><item>az</item><item>bg</item><item>ca</item><item>cs</item>
+        <item>cy</item><item>de</item><item>el</item><item>en</item><item>es</item><item>fa</item>
+        <item>fi</item><item>fr</item><item>fur-IT</item><item>ga-IE</item><item>hu</item><item>id</item>
+        <item>is</item><item>it</item><item>he</item><item>ja</item><item>ka</item><item>ko</item>
+        <item>nl</item><item>nn-NO</item><item>pl</item><item>pt-BR</item><item>pt-PT</item><item>ro</item>
+        <item>ru</item><item>sc-IT</item><item>sl</item><item>sq</item><item>ta</item><item>tr</item>
+        <item>ug</item><item>uk</item><item>vi</item><item>zh-CN</item><item>zh-TW</item>
+    </string-array>
+
 </resources>

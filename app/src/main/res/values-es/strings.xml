@@ -110,4 +110,9 @@
     <string name="hide_native_seek_buttons_description">Ocultar los botones de rebobinado y avance rápido de los controles del reproductor de vídeo</string>
     <string name="remember_video_playback_position_enabled_title">Recordar la posición de reproducción</string>
     <string name="remember_video_playback_position_enabled_description">Reanudar los vídeos desde la última posición en la que se detuvieron</string>
+    <string name="language_title">Idioma</string>
+    <string name="language_system_default">Predeterminado del sistema</string>
+    <string name="search_media_hint">Buscar fotos y vídeos</string>
+    <string name="search_media_helper">Busca nombres de archivos y álbumes en este dispositivo</string>
+    <string name="search_results_title">Resultados para “%1$s”</string>
 </resources>

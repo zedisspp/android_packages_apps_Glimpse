@@ -95,4 +95,9 @@
     <string name="set_wallpaper_lock_screen">Kilit ekranı</string>
     <string name="set_wallpaper_both">Ana ekran ve kilit ekranı</string>
     <string name="warning_bin_time_period">Dosyalar 30 gün sonra kalıcı bir şekilde silinecektir.</string>
+    <string name="language_title">Dil</string>
+    <string name="language_system_default">Sistem varsayılanı</string>
+    <string name="search_media_hint">Fotoğraf ve video ara</string>
+    <string name="search_media_helper">Bu cihazdaki dosya ve albüm adlarında arama yapar</string>
+    <string name="search_results_title">“%1$s” için sonuçlar</string>
 </resources>

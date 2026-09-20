@@ -110,4 +110,9 @@
     <string name="hide_native_seek_buttons_description">Blendet die Vor- und Zurückspultasten aus den Videosteuerungselementen aus</string>
     <string name="remember_video_playback_position_enabled_title">Wiedergabeposition merken</string>
     <string name="remember_video_playback_position_enabled_description">Videos an der zuletzt gestoppten Stelle fortsetzen</string>
+    <string name="language_title">Sprache</string>
+    <string name="language_system_default">Systemstandard</string>
+    <string name="search_media_hint">Fotos und Videos suchen</string>
+    <string name="search_media_helper">Durchsucht Datei- und Albumnamen auf diesem Gerät</string>
+    <string name="search_results_title">Ergebnisse für „%1$s“</string>
 </resources>

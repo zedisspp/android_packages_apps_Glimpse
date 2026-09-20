@@ -132,4 +132,9 @@
     <string name="hide_native_seek_buttons_description">Skrij gumba za previjanje iz kontrolnikov predvajalnika videoposnetkov</string>
     <string name="remember_video_playback_position_enabled_title">Zaponi si položaj predvajanja</string>
     <string name="remember_video_playback_position_enabled_description">Nadaljuj videoposnetke od zadnjega ustavljenega položaja</string>
+    <string name="language_title">Jezik</string>
+    <string name="language_system_default">Sistemsko privzeto</string>
+    <string name="search_media_hint">Iskanje fotografij in videoposnetkov</string>
+    <string name="search_media_helper">Išče imena datotek in albumov v tej napravi</string>
+    <string name="search_results_title">Rezultati za »%1$s«</string>
 </resources>

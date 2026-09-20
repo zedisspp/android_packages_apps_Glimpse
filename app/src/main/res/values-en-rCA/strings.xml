@@ -110,4 +110,9 @@
     <string name="hide_native_seek_buttons_description">Hide rewind and fast-forward buttons from the video player controls</string>
     <string name="remember_video_playback_position_enabled_title">Remember playback position</string>
     <string name="remember_video_playback_position_enabled_description">Resume videos from the last stopped position</string>
+    <string name="language_title">Language</string>
+    <string name="language_system_default">System default</string>
+    <string name="search_media_hint">Search photos and videos</string>
+    <string name="search_media_helper">Searches file names and album names on this device</string>
+    <string name="search_results_title">Results for “%1$s”</string>
 </resources>
