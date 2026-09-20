@@ -360,7 +360,10 @@ class SecureFolderActivity : AppCompatActivity() {
     @Deprecated("Android compatibility callback")
     override fun onResume() {
         super.onResume()
-        if (vaultKey != null) refresh()
+        // The document picker triggers onResume before onActivityResult.
+        // Do not refresh here while the picker is open, otherwise both
+        // callbacks can populate the list and display every entry twice.
+        if (vaultKey != null && !pickerOpen) refresh()
     }
 
     @Deprecated("Android compatibility callback")
