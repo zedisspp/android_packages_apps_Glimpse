@@ -48,7 +48,7 @@ class SecureFolderActivity : AppCompatActivity() {
     private val onSurfaceVariant get() = MaterialColors.getColor(window.decorView, com.google.android.material.R.attr.colorOnSurfaceVariant)
     private val surfaceContainer get() = MaterialColors.getColor(window.decorView, com.google.android.material.R.attr.colorSurfaceContainer)
     private val surfaceContainerHigh get() = MaterialColors.getColor(window.decorView, com.google.android.material.R.attr.colorSurfaceContainerHigh)
-    private val primary get() = MaterialColors.getColor(window.decorView, com.google.android.material.R.attr.colorPrimary)
+    private val primary get() = MaterialColors.getColor(window.decorView, androidx.appcompat.R.attr.colorPrimary)
     private val primaryContainer get() = MaterialColors.getColor(window.decorView, com.google.android.material.R.attr.colorPrimaryContainer)
     private val onPrimaryContainer get() = MaterialColors.getColor(window.decorView, com.google.android.material.R.attr.colorOnPrimaryContainer)
 
@@ -105,7 +105,7 @@ class SecureFolderActivity : AppCompatActivity() {
             setCardBackgroundColor(primaryContainer)
             strokeWidth = 0
             cardElevation = 0f
-            contentPadding = dp(18)
+            setContentPadding(dp(18), dp(18), dp(18), dp(18))
         }
         val headerRow = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
@@ -246,7 +246,7 @@ class SecureFolderActivity : AppCompatActivity() {
         }
         val edit = TextInputEditText(this).apply {
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-            singleLine = true
+            setSingleLine(true)
         }
         layout.addView(edit)
         container.addView(layout)
@@ -255,7 +255,7 @@ class SecureFolderActivity : AppCompatActivity() {
             MaterialButton(this).apply {
                 text = getString(R.string.secure_folder_fingerprint)
                 isAllCaps = false
-                icon = ContextCompat.getDrawable(this@SecureFolderActivity, android.R.drawable.ic_lock_idle_lock)
+                setIcon(ContextCompat.getDrawable(this@SecureFolderActivity, android.R.drawable.ic_lock_idle_lock))
                 iconGravity = MaterialButton.ICON_GRAVITY_TEXT_START
                 cornerRadius = dp(20)
                 minHeight = dp(48)
@@ -416,7 +416,7 @@ class SecureFolderActivity : AppCompatActivity() {
             setCardBackgroundColor(surfaceContainer)
             cardElevation = 0f
             strokeWidth = 0
-            contentPadding = dp(24)
+            setContentPadding(dp(24), dp(24), dp(24), dp(24))
         }
         val content = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
@@ -450,7 +450,7 @@ class SecureFolderActivity : AppCompatActivity() {
             cardElevation = 0f
             strokeWidth = dp(1)
             strokeColor = MaterialColors.getColor(window.decorView, com.google.android.material.R.attr.colorOutlineVariant)
-            contentPadding = dp(14)
+            setContentPadding(dp(14), dp(14), dp(14), dp(14))
         }
         val content = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
         val top = LinearLayout(this).apply {
