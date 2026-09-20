@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.androidx.exifinterface)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.service)
+    implementation(libs.jellyfin.media3.ffmpeg.decoder)
     implementation(libs.androidx.media3.common.ktx)
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.exoplayer.dash)
